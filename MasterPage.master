@@ -1,0 +1,100 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link ID="estiloCss" rel="stylesheet" runat="server" media="screen" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+        <!-- Menú lateral -->
+        <div class="menu_container" id="menu_container">
+            <div class="logo_menu"></div>
+            <a href="dashboard.aspx" > <img src="img\icons\inicio.svg" class="icon" alt="IconHome" /><asp:Label ID="lb_dash" runat="server"> </asp:Label> </a>
+		    <a href="account.aspx" > <img src="img\icons\account.svg" class="icon" alt="IconAccount"/><asp:Label ID="lb_account" runat="server"> </asp:Label></a>
+            <a href="services_list.aspx" > <img src="img\icons\account.svg" class="icon" alt="IconServices"/><asp:Label ID="lb_services" runat="server"> </asp:Label></a>
+
+		    <!--Submenú VENTAS -->
+            <a id="ventas-btn"><img src="img\icons\venta.svg" class="icon" alt="IconSales"/> <asp:Label ID="lb_vent" runat="server"> </asp:Label> <span class="arrow" id="arrow-ventas">&#9654;</span></a>
+            <div class="submenu" id="submenu-ventas">
+			    <a href="ventas_new.aspx" > <img src="img\icons\cart.svg" class="icon" alt="IconNewSale"/> <asp:Label ID="lb_newVent" runat="server"></asp:Label> </a>
+			    <a href="ventas_hist.aspx" > <img src="img\icons\historial.svg" class="icon" alt="IconHst"/><asp:Label ID="lb_histVent" runat="server"> </asp:Label></a>
+            </div>
+
+            <!--Submenú INVENTARIO -->
+		    <a id="inv-btn"><img src="img\icons\inventario.svg" class="icon" alt="IconInv"/> <asp:Label ID="lb_inv" runat="server"> </asp:Label><span class="arrow" id="arrow-inv">&#9654;</span></a>
+            <div class="submenu" id="submenu-inv">
+			    <a href="cat_list.aspx" > <img src="img\icons\categoria.svg" class="icon" alt="IconCat"/><asp:Label ID="lb_catList" runat="server"> </asp:Label></a>
+			    <a href="prods_list.aspx" > <img src="img\icons\prods.svg" class="icon" alt="IconProds"/> <asp:Label ID="lb_prodList" runat="server"> </asp:Label> </a>
+            </div>
+
+            <a href="login.aspx" > <img src="img\icons\salir.svg" class="icon" alt="IconLeave"/><asp:Label ID="lb_salir" runat="server"> </asp:Label></a>
+            <button class="close-btn" id="close-btn"></button>
+        </div>
+
+        <div class="content" id="content">
+            <div class="topbar">
+                <div class="hamburger" id="hamburger">&#9776;</div>
+                <div class="user_info">
+                    <asp:Image ID="user_img" runat="server" CssClass="user_pic" AlternateText="User Pic" />
+                    <asp:Label ID="user_name" runat="server" CssClass="username"></asp:Label>
+                </div>
+            </div>
+            
+            <div>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </div>
+</body>
+    
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const menu_container = document.getElementById('menu_container');
+        const overlay = document.getElementById('content');
+        const closeBtn = document.getElementById('close-btn');
+
+        // Submenú Inventario
+        const invBtn = document.getElementById('inv-btn');
+        const submenuInv = document.getElementById('submenu-inv');
+        const arrowInv = document.getElementById('arrow-inv');
+
+        // Submenú Ventas
+        const ventasBtn = document.getElementById('ventas-btn');
+        const submenuVentas = document.getElementById('submenu-ventas');
+        const arrowVentas = document.getElementById('arrow-ventas');
+
+        // Abrir Menu
+        hamburger.addEventListener('click', () => {
+            menu_container.classList.add('active');
+            isOpen = true;
+            overlay.classList.add('active');
+        });
+
+        // Abrir submenú Inventario
+        invBtn.addEventListener('click', () => {
+            submenuInv.classList.toggle('active');
+            arrowInv.classList.toggle('rotate');
+        });
+
+        // Abrir submenú Ventas
+        ventasBtn.addEventListener('click', () => {
+            submenuVentas.classList.toggle('active');
+            arrowVentas.classList.toggle('rotate');
+        });
+
+        // Cerrar menu_container
+        closeBtn.addEventListener('click', () => {
+            menu_container.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+    </script>
+
+</html>
