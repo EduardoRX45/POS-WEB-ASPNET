@@ -2,6 +2,7 @@
 Partial Class registro
     Inherits System.Web.UI.Page
     Dim usu As New usuario
+    Dim crypto As New cripto
 
     Private Sub btn_reg_Click(sender As Object, e As EventArgs) Handles btn_reg.Click
         usu.Nombre = TextBox1.Text
@@ -9,7 +10,7 @@ Partial Class registro
         usu.ApellidoMat = TextBox3.Text
         usu.Telefono = TextBox4.Text
         usu.Correo = email.Text
-        usu.Contra = pass.Text
+        usu.Contra = crypto.Encriptar(pass.Text)
         usu.guardar()
         mensaje.Text = "Usuario Registrado con Exito"
     End Sub

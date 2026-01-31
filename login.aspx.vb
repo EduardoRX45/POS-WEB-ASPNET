@@ -4,6 +4,7 @@ Partial Class login
     Inherits System.Web.UI.Page
     Public lang As String
     Dim usu As New usuario
+    Dim cryp As New cripto
 
     Sub Set_lang(lang As String)
         Select Case lang
@@ -24,10 +25,11 @@ Partial Class login
     End Sub
 
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
-        usu.buscar_login(email.Text, pass.Text)
+        Dim contra_Enc As String = cryp.Encriptar(pass.Text)
+        usu.buscar_login(email.Text, contra_Enc)
         usu.Idioma = "esp"
 
-        If usu.Contra = pass.Text Then
+        If usu.Contra = contra_Enc Then
             Session("usuario") = usu
             Response.Redirect("dashboard.aspx")
         Else

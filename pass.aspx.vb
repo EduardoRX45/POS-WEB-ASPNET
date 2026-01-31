@@ -3,6 +3,7 @@ Partial Class pass
     Inherits System.Web.UI.Page
     Dim usu As New usuario
     Dim correo1 As New correo
+    Dim cryp As New cripto
     Private contraDec As String
 
     Public Sub Change_lang(lang As String)
@@ -33,7 +34,7 @@ Partial Class pass
     Private Sub btn_Click(sender As Object, e As EventArgs) Handles btn.Click
         usu.buscar_Contra(email.Text)
         If email.Text = usu.Correo Then
-            correo1.EnviarCorreo("Contraseña", usu.Correo, "Tu contraseña es: " & usu.Contra)
+            correo1.EnviarCorreo("Contraseña", usu.Correo, "Tu contraseña es: " & cryp.Desencriptar(usu.Contra))
             msg_rp.Text = "Datos Enviados"
         Else
             msg_rp.Text = "Usuario no existe"

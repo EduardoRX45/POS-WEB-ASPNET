@@ -2,6 +2,7 @@
 Partial Class account
     Inherits System.Web.UI.Page
     Dim current_usu As New usuario
+    Dim crypto As New cripto
     Dim savePath As String = Server.MapPath("~/img/users/")
     Public Sub Set_lang(lang As String)
         Select Case lang
@@ -54,16 +55,16 @@ Partial Class account
     End Sub
 
     Private Sub btn_saveContra_Click(sender As Object, e As EventArgs) Handles btn_saveContra.Click
-        If current_usu.Contra = TextBox_contra.Text Then
+        If crypto.Desencriptar(current_usu.Contra) = TextBox_contra.Text Then
             If TextBox_newContra.Text = TextBox_newContraConf.Text Then
-                current_usu.Contra = TextBox_newContra.Text
+                current_usu.Contra = crypto.Encriptar(TextBox_newContra.Text)
                 current_usu.guardar()
                 Label_contraMsg.Text = "Contraseñas actualizadas"
             Else
                 Label_contraMsg.Text = "Las contraseñas no coinciden"
             End If
         Else
-                Label_contraMsg.Text = "Contraseña Actual Incorrecta"
+            Label_contraMsg.Text = "Contraseña Actual Incorrecta"
         End If
     End Sub
 
