@@ -89,13 +89,16 @@ Partial Class ventas_new
     End Sub
 
     Private Sub btn_conf_Click(sender As Object, e As EventArgs) Handles btn_conf.Click
+        Dim url As String = "ticket.aspx?IdVenta=" & IdVenta
+        Dim dashboardUrl As String = "dashboard.aspx"
+        Dim script As String = "window.open('" & url & "', '_blank'); window.location.href = '" & dashboardUrl & "';"
         If Convert.ToInt32(Label_cantArtNo.Text) >= 1 Then
             venta.CantProds = detvent.CantProdsTot(IdVenta)
             venta.GranTotal = detvent.TotalVenta(IdVenta)
             venta.GranBeneficios = detvent.TotalBeneficios(IdVenta)
             prods.actualizarStock()
             venta.FinalizarVenta(IdVenta)
-            Response.Redirect("dashboard.aspx")
+            ClientScript.RegisterStartupScript(Me.GetType(), "Abrir", script, True)
         Else
             lb_checkMSG.Text = "No tienes productos agregados"
         End If
