@@ -11,6 +11,7 @@ Partial Class prods_list
             Case "esp"
                 content_title.Text = "Lista de Productos"
                 btn_newProd.Text = "Nuevo Producto"
+                btn_reportProd.Text = "Reporte de Inventario"
                 dtg_prods.Columns(0).HeaderText = "Imagen"
                 dtg_prods.Columns(1).HeaderText = "Código Barras"
                 dtg_prods.Columns(2).HeaderText = "Nombre"
@@ -47,6 +48,13 @@ Partial Class prods_list
         Dim IdProducto As Integer
         IdProducto = btnEdit.CommandArgument
         Response.Redirect("prods_edit.aspx?IdProducto=" & IdProducto)
+    End Sub
+
+    Private Sub btn_reportProd_Click(sender As Object, e As EventArgs) Handles btn_reportProd.Click
+        Dim url = "prods_reporte_file.aspx"
+        Dim script As String = "window.open('" & url & "', '_blank');"
+        ClientScript.RegisterStartupScript(Me.GetType(), "Abrir", script, True)
+        'Response.Redirect("prods_reporte_file.aspx")
     End Sub
 
 End Class

@@ -12,6 +12,7 @@
 
             <div class="table">
                 <asp:Button ID="btn_newProd" runat="server" CssClass="btn_addItem"/>
+				<asp:Button ID="btn_reportProd" runat="server" CssClass="btn_addItem"/>
                 <br />
                 <asp:DataGrid runat="server" AutoGenerateColumns="false" ID="dtg_prods">
                     <Columns>
