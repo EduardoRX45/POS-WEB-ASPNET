@@ -1,0 +1,45 @@
+﻿body {
+    display: flex;
+    text-align: center;
+    margin: 0px;
+}
+
+p{
+    margin: 10px;
+}
+
+.ticket {
+    border: 1px solid #000000;
+}
+
+.prods{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px;
+    padding : 0px;
+}
+
+.prods-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media print {
+    @page {
+        size: ;
+        margin: 0px;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .btnPrint {
+        display: none !important;
+    }
+}
