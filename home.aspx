@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="css/style_home.css" rel="stylesheet" runat="server" media="screen" />
 </head>
+
 <body>
   <!-- WhatsApp Float Button -->
   <a href="https://wa.me/527221243028?text=Hola,%20necesito%20información%20sobre%20sus%20servicios" class="btn btn-whatsapp animate__animated animate__bounceIn animate__delay-2s">
@@ -26,9 +27,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="login.html">
-      <img src="logo.png" alt="Cerrajería Cardoso" height="40" class="me-2">
-    </a>
+    <a class="navbar-brand d-flex align-items-center" href="#">Cerrajería Cardoso</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>

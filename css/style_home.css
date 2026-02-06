@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-section {
-  background: url('img1.png') no-repeat center center;
+  background: url('img/BG1.png') ;
   background-size: 90%; /* Cambiado de 'cover' a 'contain' para logo */
   background-color: #BFE8FD; /* Color de fondo por si el logo tiene transparencia */
   min-height: 80vh;
