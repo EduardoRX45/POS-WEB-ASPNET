@@ -1,0 +1,631 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/*
+    ----------------------------------------
+                VARIABLES DE COLOR 
+    ----------------------------------------
+*/
+:root {
+    --color-principal: #2a2a2c;
+    --color-secundario: #202022;
+    --color-fondo-inferior: #D6D6D6;
+    --color-fondo-superior: #535353;
+    --color-texto: white;
+    --color-titulo-container: #353535;
+    --color-texto-titulos-container: white;
+    --color-tabla-border: white;
+}
+
+/*
+    ----------------------------------------
+                ESTILO GENERAL 
+    ----------------------------------------
+*/
+
+* {
+    font-family: Montserrat;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+}
+
+/*
+    ----------------------------------------
+                   MASTER PAGE 
+    ----------------------------------------
+*/
+
+/* ---------------------------- */
+
+/* MENU DE NAVEGACION */
+.menu_container {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: var(--color-principal);
+    transition: left 0.3s ease;
+    z-index: 1002;
+}
+
+.menu_container.active {
+    left: 0;
+}
+
+.menu_container a {
+    display: block;
+    color: var(--color-texto);
+    text-decoration: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.menu_container a:hover {
+    background-color: var(--color-secundario);
+}
+
+/* Imagen del Logo en el Menu */
+.logo_menu {
+    width: 100%;
+    height: 100px;
+    background-image: url('img/logo_menu.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 25px;
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.1);
+    background-image: url('../img/icons/close.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* ---------------------------- */
+
+/* SUBMENUS */
+.submenu {
+    display: none;
+}
+
+/* Submen� activo */
+.submenu.active {
+    display: block;
+}
+
+.submenu a {
+    padding-left: 20px;
+    background-color: var(--color-secundario);
+}
+
+.submenu a:hover {
+    background-color: #625a96;
+}
+
+
+/* Indicador de flecha */
+.arrow {
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+    transform: rotate(90deg);
+}
+
+/* ---------------------------- */
+
+/* BARRA SUPERIOR */
+.topbar {
+    width: 100%;
+    height: 80px;
+    background-color: var(--color-fondo-superior);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-texto);
+}
+
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.user_info {
+    display: flex;
+}
+
+.username{
+    font-size: 25px;
+    padding: 25px;
+}
+
+.user_pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin: 10px;
+}
+
+.btn_voice {
+    width: 60px;
+    height: 60px;
+    background-color: #000000;
+    border: 1px solid #000000;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* CONTENDEDOR DEL RESTO DE LA PAGINA */
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-fondo-inferior);
+}
+
+
+/*
+    ---------------------------------------------------------------
+        ELEMENTOS GENERICOS (Aplica a la mayoria de paginas)
+    ---------------------------------------------------------------
+*/
+
+.content-container {
+    background-color: var(--color-fondo-superior);
+    margin: 20px;
+    padding-bottom: 20px;
+    border: 0px;
+    border-radius: 10px;
+    width: calc(100%-100px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-content {
+    height: 40px;
+    width: 100%;
+    background-color: var(--color-titulo-container);
+    text-align: center;
+    border: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 10px;
+    color: var(--color-texto-titulos-container);
+    font-size: 22px;
+}
+
+table {
+    border: 1px solid var(--color-tabla-border);
+    text-align: center;
+    font-size: 18px;
+    color: var(--color-texto);
+}
+
+table td {
+    padding: 5px;
+}
+
+
+.content1{
+    display: flex;
+    flex-direction: column;
+}
+
+.content1-flexRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content1-flexRow div{
+    margin: 20px;
+}
+
+.btn_addItem {
+    color: white;
+    background-color: #1dc88a;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid #1dc88a;
+    padding: 10px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.btn_addItem:hover{
+    color: black;
+    background-color: #ffffff;
+}
+
+.btn_edit {
+    background-image: url('https://img.icons8.com/?size=100&id=43845&format=png&color=ffffff');
+    background-size: contain;
+    background-position: center;
+    background-color: #66a4dc;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #66a4dc;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btn_edit:hover{
+    background-image: url('https://img.icons8.com/?size=100&id=43845&format=png&color=000000');
+    color: black;
+    background-color: #ffffff;
+}
+
+.btn_remove {
+    background-image: url('https://img.icons8.com/?size=100&id=43949&format=png&color=ffffff');
+    background-size: contain;
+    background-position: center;
+    background-color: #e34b3f;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e34b3f;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btn_remove:hover{
+    background-image: url('https://img.icons8.com/?size=100&id=43949&format=png&color=000000');
+    color: black;
+    background-color: #ffffff;
+}
+
+.btn_ok {
+    background-color: #1dc88a;
+    padding: 10px;
+    margin: 20px;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid #1dc88a;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn_ok:hover{
+    color: black;
+    background-color: #ffffff;
+}
+
+.btn_cancel {
+    background-color: #e34b3f;
+    padding: 10px;
+    margin: 20px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid #e34b3f;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn_cancel:hover{
+    color: black;
+    background-color: #ffffff;
+}
+
+.input_txt{
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+    font-size: 18px
+}
+
+.input_txt:focus {
+    background-color: #fffcc7;
+}
+
+.ddl {
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+    font-size: 18px
+}
+
+.text-lb{
+    font-size: 18px;
+    color: var(--color-texto);
+}
+
+
+/*
+    ----------------------------------------
+              SOLO DASHBOARD
+    ----------------------------------------
+*/
+.page-title {
+    font-size: 25px;
+    margin: 20px;
+    color: white;
+}
+
+.db_boxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+.box1 {
+    background-color: var(--color-fondo-superior);
+    border-radius: 10px;
+    border: 0px;
+    width: 22%;
+    height: 100px;
+    color: #2046CF;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.box2 {
+    background-color: var(--color-fondo-superior);
+    border-radius: 10px;
+    border: 0px;
+    width: 22%;
+    height: 100px;
+    color: #219C71;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.box3 {
+    background-color: var(--color-fondo-superior);
+    border-radius: 10px;
+    border: 0px;
+    width: 22%;
+    height: 100px;
+    color: #3596A7;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.box4 {
+    background-color: var(--color-fondo-superior);
+    border-radius: 10px;
+    border: 0px;
+    width: 22%;
+    height: 100px;
+    color: #AB852B;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.boxDB_text{
+    padding-left: 20px;
+}
+
+.box_number {
+    padding-left: 20px;
+    font-size: 30px;
+    color: var(--color-texto);
+}
+
+.graficas-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.last-sales_container{
+    background-color: var(--color-fondo-superior);
+    margin: 10px;
+    border: 0px;
+    border-radius: 10px;
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-sales_container {
+    background-color: var(--color-fondo-superior);
+    margin: 10px;
+    border: 0px;
+    border-radius: 10px;
+    width: 40%;
+    height: 300px;
+}
+
+/*
+    ----------------------------------------
+              SOLO NUEVA VENTA
+    ----------------------------------------
+*/
+
+.ventas-container {
+    margin: 20px;
+    width: calc(100%-100px);
+    height: 500px;
+    display: flex;
+}
+
+.ventas-content1 {
+    background-color: var(--color-fondo-superior);
+    margin: 20px;
+    border: 0px;
+    border-radius: 10px;
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.ventas-content2 {
+    margin: 20px;
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.ventas-details {
+    background-color: var(--color-fondo-superior);
+    border: 0px;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.ventas-conf {
+    background-color: var(--color-fondo-superior);
+    width: 100%;
+    border: 0px;
+    border-radius: 10px;
+    height: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_ventConf{
+    background-color: #1dc88a;
+    color: white;
+    padding: 10px;
+    margin: 20px;
+    width: 90%;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid #1dc88a;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn_ventConf:hover{
+    background-color: #ffffff;
+    color: black
+}
+
+.btn_ventCancel {
+    background-color: #e34b3f;
+    color: white;
+    padding: 10px;
+    margin: 20px;
+    width: 90%;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid #e34b3f;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn_ventCancel:hover{
+    background-color: #ffffff;
+    color: black;
+}
+
+/*
+    ----------------------------------------
+              SOLO MI CUENTA
+    ----------------------------------------
+*/
+
+.account-container {
+    margin: 20px;
+    width: calc(100%-100px);
+    height: auto;
+    display: flex;
+}
+
+.account-content1 {
+    background-color: var(--color-fondo-superior);
+    margin: 20px;
+    border: 0px;
+    border-radius: 10px;
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-content1-data{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.account-content1-data div{
+    margin: 10px;
+}
+
+.account-content2 {
+    background-color: var(--color-fondo-superior);
+    margin: 20px;
+    border: 0px;
+    border-radius: 10px;
+    width: 40%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*
+    ----------------------------------------
+                  MODAL
+    ----------------------------------------
+*/
+/* Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}

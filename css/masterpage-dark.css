@@ -8,15 +8,17 @@
                 VARIABLES DE COLOR 
     ----------------------------------------
 */
-:root {
-    --color-principal: #2a2a2c;
-    --color-secundario: #202022;
-    --color-fondo-inferior: #D6D6D6;
-    --color-fondo-superior: #535353;
-    --color-texto: white;
-    --color-titulo-container: #353535;
+:root{
+    --color-principal: #1E293B;
+    --color-secundario: #0F172A;
+    --color-fondo-inferior: #e6e7e9;
+    --color-fondo-superior: #ffffff;
+    --color-fondo-topbar: #334155;
+    --color-texto-menu: white;
+    --color-texto: black;
+    --color-titulo-container: #1E293B;
     --color-texto-titulos-container: white;
-    --color-tabla-border: white;
+    --color-tabla-border: rgb(129, 129, 129);
 }
 
 /*
@@ -30,7 +32,7 @@
 }
 
 body {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     margin: 0px auto;
     display: flex;
@@ -63,7 +65,7 @@ body {
 
 .menu_container a {
     display: block;
-    color: var(--color-texto);
+    color: var(--color-texto-menu);
     text-decoration: none;
     padding: 10px;
     font-size: 20px;
@@ -122,7 +124,7 @@ body {
 }
 
 .submenu a:hover {
-    background-color: #625a96;
+    background-color: #16223c;
 }
 
 
@@ -142,11 +144,11 @@ body {
 .topbar {
     width: 100%;
     height: 80px;
-    background-color: var(--color-fondo-superior);
+    background-color: var(--color-fondo-topbar);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--color-texto);
+    color: white;
 }
 
 .hamburger {
@@ -189,7 +191,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: var(--color-fondo-inferior);
 }
 
@@ -224,6 +226,7 @@ body {
     padding-top: 10px;
     color: var(--color-texto-titulos-container);
     font-size: 22px;
+    font-weight: 600;
 }
 
 table {
@@ -376,7 +379,7 @@ table td {
 .page-title {
     font-size: 25px;
     margin: 20px;
-    color: white;
+    color: dimgrey;
 }
 
 .db_boxes {
@@ -403,7 +406,7 @@ table td {
     border: 0px;
     width: 22%;
     height: 100px;
-    color: #219C71;
+    color: #1D3A30;
     font-size: 18px;
     font-weight: 400;
 }
@@ -414,7 +417,7 @@ table td {
     border: 0px;
     width: 22%;
     height: 100px;
-    color: #3596A7;
+    color: #344D51;
     font-size: 18px;
     font-weight: 400;
 }
@@ -425,7 +428,7 @@ table td {
     border: 0px;
     width: 22%;
     height: 100px;
-    color: #AB852B;
+    color: #6B4E0A;
     font-size: 18px;
     font-weight: 400;
 }
