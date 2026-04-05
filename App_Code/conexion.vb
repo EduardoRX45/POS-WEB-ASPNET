@@ -31,7 +31,7 @@ Public Class conexion
     End Property
 
     Public Sub New()
-        pConstring = "Initial Catalog=Cardoso; Data Source=.; UID=sa; pwd=root"
+        pConstring = "Initial Catalog=Cardoso; Data Source=.; UID=sa; pwd=123"
     End Sub
 
     Public Sub Ejecutar()
@@ -107,6 +107,5 @@ Public Class conexion
 		pBase.Close()
 		pBase.Dispose()
     End Sub
-
 
 End Class

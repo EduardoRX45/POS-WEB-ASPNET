@@ -6,7 +6,6 @@
     --color-accent: #fffcc7;
     --color-border: #bdbdbd;
     --color-container: rgba(255, 255, 255, 0.9);
-
     --radius-sm: 12px;
     --radius-md: 18px;
 }
@@ -24,7 +23,7 @@ body {
     align-items: center;
     justify-content: center;
     /* Nuevo background */
-    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
 }
 
 /* Título */
