@@ -33,7 +33,7 @@ Partial Class cat_edit
         cat.IdCategoria = IdCategoria
         cat.Nombre = TextBox_nombre.Text
         cat.Descripcion = TextBox_desc.Text
-        Response.Redirect("cat_list.aspx")
         cat.guardar()
+        Response.Redirect("cat_list.aspx")
     End Sub
 End Class

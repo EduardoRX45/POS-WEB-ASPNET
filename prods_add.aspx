@@ -27,7 +27,7 @@
                     <br />
                     <asp:Label ID="Label_codbarr" runat="server" CssClass="text-lb"></asp:Label>
                     <br />
-                    <asp:TextBox ID="TextBox_codbarr" runat="server" required="true" CssClass="input_txt"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_codbarr" runat="server" TextMode="Number" required="true" CssClass="input_txt"></asp:TextBox>
                     <br />
                     <br />
                     <asp:Label ID="Label_desc" runat="server" CssClass="text-lb"></asp:Label>
@@ -44,7 +44,7 @@
                 <div>
                     <asp:Label ID="Label_stock" runat="server" CssClass="text-lb"></asp:Label>
                     <br />
-                    <asp:TextBox ID="TextBox_stock" runat="server" required="true" CssClass="input_txt"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_stock" runat="server" TextMode="Number" required="true" CssClass="input_txt"></asp:TextBox>
                     <br />
                     <br />
                     <asp:Label ID="Label_costo" runat="server" CssClass="text-lb"></asp:Label>
@@ -67,5 +67,23 @@
             </div>
         </div>
     </form>
+    
+<script>
+    const input = document.getElementById("<%= TextBox_costo.ClientID %>");
+    const input2 = document.getElementById("<%= TextBox_precio.ClientID %>");
+    input.addEventListener("input", function () {
+        // Permite números y un solo punto decimal
+        this.value = this.value
+            .replace(/[^0-9.]/g, '')     // elimina todo excepto números y punto
+            .replace(/(\..*)\./g, '$1'); // evita más de un punto
+    });
+    input2.addEventListener("input", function () {
+        // Permite números y un solo punto decimal
+        this.value = this.value
+            .replace(/[^0-9.]/g, '')     // elimina todo excepto números y punto
+            .replace(/(\..*)\./g, '$1'); // evita más de un punto
+    });
+
+</script>
 </asp:Content>
 

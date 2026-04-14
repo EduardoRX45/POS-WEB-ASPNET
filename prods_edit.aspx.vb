@@ -6,6 +6,7 @@ Partial Class prods_edit
     Dim IdProducto As Integer
     Dim current_usu As New usuario
     Dim prod As New productos
+    Dim prod2 As New productos
     Dim cat As New categorias
     Dim savePath As String = Server.MapPath("~/img/prods/")
 
@@ -45,10 +46,28 @@ Partial Class prods_edit
             TextBox_precio.Text = prod.Precio
         Else
             IdProducto = Request.QueryString("IdProducto")
+            prod.buscarId(IdProducto)
         End If
     End Sub
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+        prod2.verificarExistencia(TextBox_nombre.Text, TextBox_codbarr.Text)
+        If TextBox_stock.Text < 0 Or TextBox_costo.Text <= 0 Or TextBox_precio.Text <= 0 Then
+            lb_MSG.Text = "Los campos deben ser mayores a 0"
+        Else
+            If TextBox_nombre.Text = prod2.Nombre Or TextBox_codbarr.Text = prod2.CodBarras Then
+                If prod2.IdProducto = prod.IdProducto Then
+                    guardarProd()
+                Else
+                    lb_MSG.Text = "Ya hay un producto registrado con los mismos datos"
+                End If
+            Else
+                guardarProd()
+            End If
+        End If
+    End Sub
+
+    Private Sub guardarProd()
         prod.IdProducto = IdProducto
         prod.Nombre = TextBox_nombre.Text
         prod.Marca = TextBox_marca.Text

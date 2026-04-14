@@ -20,7 +20,7 @@ Partial Class dashboard
         If Not IsPostBack Then
             current_usu = CType(Session("usuario"), usuario)
             Set_lang(current_usu.Idioma)
-            dash.obtener_datos()
+            'dash.obtener_datos()
             total_sales_no.Text = dash.Ventas
             total_revenue_no.Text = "$" & dash.Ingresos
             total_prods_no.Text = dash.Productos

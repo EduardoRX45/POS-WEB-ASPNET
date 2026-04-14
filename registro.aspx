@@ -23,9 +23,9 @@
                 <br />
                 <asp:TextBox ID="TextBox3" placeholder="Apellido Materno" runat="server" CssClass="input_tb" required="true"></asp:TextBox>
                 <br />
-                <asp:TextBox ID="TextBox4" placeholder="Telefono" runat="server" CssClass="input_tb" required="true"></asp:TextBox>
-                <br />
-                <asp:TextBox ID="email" placeholder="Correos" runat="server" TextMode="Email" CssClass="input_tb" required="true"></asp:TextBox>
+<%--                <asp:TextBox ID="TextBox4" placeholder="Telefono" runat="server" TextMode="Number" CssClass="input_tb" required="true"></asp:TextBox>
+                <br />--%>
+                <asp:TextBox ID="email" placeholder="Correo" runat="server" TextMode="Email" CssClass="input_tb" required="true"></asp:TextBox>
                 <br />
                 <asp:TextBox ID="pass" placeholder="Contraseña" runat="server" TextMode="Password" CssClass="input_tb" required="true"></asp:TextBox>
                 <br />

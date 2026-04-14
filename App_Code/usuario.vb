@@ -115,6 +115,18 @@ Public Class usuario
         llename(con)
     End Sub
 
+    Public Sub buscar_Correo(Correo As String)
+        con.SQL = "SELECT * FROM Usuarios WHERE Correo = '" & Correo & "';"
+        con.Llenar()
+        llename(con)
+    End Sub
+
+    Public Sub buscar_Telf(Telefono As String)
+        con.SQL = "SELECT * FROM Usuarios WHERE Telefono = '" & Correo & "';"
+        con.Llenar()
+        llename(con)
+    End Sub
+
     Public Sub guardar()
         con.SQL = "exec sp_UsuarioAddUpd " & pIdUsuario & ",'" & pNombre & "','" & pApellidoPat & "','" & pApellidoMat & "','" & pTelefono & "','" & pCorreo & "','" & pContra & "','" & pFotoDir & "';"
         con.Ejecutar()

@@ -23,7 +23,7 @@
                         <Columns>
                             <asp:TemplateColumn>
                                 <ItemTemplate>
-                                    <asp:Button runat="server" ID="btnRemove" CommandArgument='<%# Eval("IdProducto") %>' OnClick="btnRemove_Click" CssClass="btn_remove"/>
+                                    <asp:Button runat="server" ID="btnRemove" CommandArgument='<%# Eval("IdGUIDProducto") %>' OnClick="btnRemove_Click" CssClass="btn_remove"/>
                                 </ItemTemplate>
                             </asp:TemplateColumn>
                             <asp:BoundColumn DataField="ProductoNom"></asp:BoundColumn>

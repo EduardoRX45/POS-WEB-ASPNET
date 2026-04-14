@@ -2,6 +2,8 @@
 Partial Class account
     Inherits System.Web.UI.Page
     Dim current_usu As New usuario
+    Dim usu2 As New usuario
+    Dim usu3 As New usuario
     Dim crypto As New cripto
     Dim savePath As String = Server.MapPath("~/img/users/")
     Public Sub Set_lang(lang As String)
@@ -15,25 +17,11 @@ Partial Class account
                 Label_appat.Text = "Apellido Paterno"
                 Label_apmat.Text = "Apellido Materno"
                 Label_correo.Text = "Correo"
-                Label_telf.Text = "Telefono"
+                'Label_telf.Text = "Telefono"
                 Label_img.Text = "Foto"
                 Label_contra.Text = "Contraseña Actual"
                 Label_newContra.Text = "Nueva Contraseña"
                 Label_newContraConf.Text = "Confirmar Nueva Contraseña"
-            Case "eng"
-                content1_title.Text = "My Data"
-                content2_title.Text = "Change Password"
-                btn_save.Text = "Save Changes"
-                btn_saveContra.Text = "Save Password"
-                Label_nombre.Text = "Name(s)"
-                Label_appat.Text = "Last Name"
-                Label_apmat.Text = "Second Last Name"
-                Label_correo.Text = "Email"
-                Label_telf.Text = "Phone Number"
-                Label_img.Text = "Photo"
-                Label_contra.Text = "Current Password"
-                Label_newContra.Text = "New Password"
-                Label_newContraConf.Text = "Confirm New Password"
         End Select
     End Sub
 
@@ -47,7 +35,7 @@ Partial Class account
             TextBox_appat.Text = current_usu.ApellidoPat
             TextBox_apmat.Text = current_usu.ApellidoMat
             TextBox_correo.Text = current_usu.Correo
-            TextBox_telf.Text = current_usu.Telefono
+            'TextBox_telf.Text = current_usu.Telefono
         Else
             current_usu = CType(Session("usuario"), usuario)
         End If
@@ -57,9 +45,13 @@ Partial Class account
     Private Sub btn_saveContra_Click(sender As Object, e As EventArgs) Handles btn_saveContra.Click
         If crypto.Desencriptar(current_usu.Contra) = TextBox_contra.Text Then
             If TextBox_newContra.Text = TextBox_newContraConf.Text Then
-                current_usu.Contra = crypto.Encriptar(TextBox_newContra.Text)
-                current_usu.guardar()
-                Label_contraMsg.Text = "Contraseñas actualizadas"
+                If TextBox_newContra.Text.Length >= 8 Then
+                    current_usu.Contra = crypto.Encriptar(TextBox_newContra.Text)
+                    current_usu.guardar()
+                    Label_contraMsg.Text = "Contraseñas actualizadas"
+                Else
+                    Label_contraMsg.Text = "La contraseña debe tener 8 o mas digitos"
+                End If
             Else
                 Label_contraMsg.Text = "Las contraseñas no coinciden"
             End If
@@ -69,16 +61,39 @@ Partial Class account
     End Sub
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+        usu2.buscar_Correo(TextBox_correo.Text)
+        If usu2.IdUsuario = current_usu.IdUsuario Then
+            If TextBox_nombre.Text.Length >= 1 And TextBox_appat.Text.Length >= 1 And TextBox_apmat.Text.Length >= 1 Then
+                ActDatos()
+            Else
+                Label_accountMsg.Text = "Los campos no pueden estar vacios"
+            End If
+        Else
+            If usu2.Correo = TextBox_correo.Text Then
+                Label_accountMsg.Text = "Correo ya registrado, ingrese otro"
+                TextBox_correo.Text = current_usu.Correo
+            Else
+                If TextBox_nombre.Text.Length >= 1 And TextBox_appat.Text.Length >= 1 And TextBox_apmat.Text.Length >= 1 Then
+                    ActDatos()
+                Else
+                    Label_accountMsg.Text = "Los campos no pueden estar vacios"
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub ActDatos()
         current_usu.Nombre = TextBox_nombre.Text
         current_usu.ApellidoPat = TextBox_appat.Text
         current_usu.ApellidoMat = TextBox_apmat.Text
         current_usu.Correo = TextBox_correo.Text
-        current_usu.Telefono = TextBox_telf.Text
+        current_usu.Telefono = 0
         current_usu.FotoDir = "~/img/users/" & current_usu.IdUsuario & ".jpg"
         If FileUpload_img.HasFile Then
             FileUpload_img.SaveAs(savePath & current_usu.IdUsuario & ".jpg")
         End If
-        Label_accountMsg.Text = "Datos Actualizados"
         current_usu.guardar()
+        Label_accountMsg.Text = "Datos actualizados"
     End Sub
+
 End Class

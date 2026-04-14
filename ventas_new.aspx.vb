@@ -50,8 +50,8 @@ Partial Class ventas_new
     End Sub
 
     Private Sub btn_add_Click(sender As Object, e As EventArgs) Handles btn_add.Click
-        If Convert.ToInt32(TextBox_cant.Text) = 0 Then
-            lb_checkMSG.Text = "Ingresa una Cantidad"
+        If Convert.ToInt32(TextBox_cant.Text) <= 0 Then
+            lb_checkMSG.Text = "Ingresa una cantidad valida"
         Else
             prods.buscarId(ddl_prods.SelectedValue)
             If prods.StockAux = 0 Then
@@ -61,6 +61,7 @@ Partial Class ventas_new
             Else
                 detvent.IdVenta = IdVenta
                 detvent.IdProducto = prods.IdProducto
+                detvent.IdGUIDProducto = Guid.NewGuid().ToString("N")
                 detvent.ProductNom = prods.Nombre
                 detvent.Cantidad = TextBox_cant.Text
                 detvent.PrecioUnit = prods.Precio
@@ -80,6 +81,8 @@ Partial Class ventas_new
         Dim btnRemove As Button = sender
         detvent.EliminarProdDV(IdVenta, btnRemove.CommandArgument)
         detvent.Grid(IdVenta, dtg_prodsDetVent)
+        Label_cantArtNo.Text = detvent.CantProdsTot(IdVenta)
+        Label_totalNo.Text = detvent.TotalVenta(IdVenta)
     End Sub
 
     Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click

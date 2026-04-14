@@ -52,7 +52,7 @@ Public Class categorias
     End Sub
     Public Sub combo(ddlCat As DropDownList)
         con.SQL = "exec sp_CategoriaSelAll"
-        con.Combo(ddlCat, "Descripcion", "IdCategoria")
+        con.Combo(ddlCat, "Nombre", "IdCategoria")
     End Sub
 
     Public Sub buscarId(IdCategoria As Integer)

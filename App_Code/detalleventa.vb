@@ -5,6 +5,7 @@ Public Class detalleventa
     Private pIdDetalleVenta As Integer
     Private pIdVenta As String
     Private pIdProducto As Integer
+    Private pIdGUIDProducto As String
     Private pProductoNom As String
     Private pCantidad As Integer
     Private pPrecioUnit As Single
@@ -35,6 +36,15 @@ Public Class detalleventa
         End Get
         Set(value As Integer)
             pIdProducto = value
+        End Set
+    End Property
+
+    Public Property IdGUIDProducto As String
+        Get
+            Return pIdGUIDProducto
+        End Get
+        Set(value As String)
+            pIdGUIDProducto = value
         End Set
     End Property
 
@@ -84,12 +94,12 @@ Public Class detalleventa
     End Property
 
     Public Sub AgregarProdDV()
-        con.SQL = "exec sp_DetVentAddProd '" & pIdVenta & "'," & pIdProducto & ",'" & pProductoNom & "'," & pCantidad & "," & pPrecioUnit & "," & pTotal & "," & pBeneficios & ";"
+        con.SQL = "exec sp_DetVentAddProd '" & pIdVenta & "'," & pIdProducto & ",'" & pIdGUIDProducto & "','" & pProductoNom & "'," & pCantidad & "," & pPrecioUnit & "," & pTotal & "," & pBeneficios & ";"
         con.Ejecutar()
     End Sub
 
-    Public Sub EliminarProdDV(IdVenta As String, IdProducto As Integer)
-        con.SQL = "exec sp_DetVentDelProd '" & IdVenta & "'," & IdProducto & ";"
+    Public Sub EliminarProdDV(IdVenta As String, IdGUIDProducto As String)
+        con.SQL = "exec sp_DetVentDelProd '" & IdVenta & "','" & IdGUIDProducto & "';"
         con.Ejecutar()
     End Sub
 
@@ -101,13 +111,21 @@ Public Class detalleventa
     Public Function CantProdsTot(IdVenta As String) As Integer
         con.SQL = "SELECT SUM(Cantidad) AS CantidadArt FROM DetalleVentas WHERE IdVenta = '" & IdVenta & "';"
         con.Llenar()
-        Return con.VariableNombreDset("CantidadArt")
+        If con.VariableNombreDset("CantidadArt") = "" Then
+            Return 0
+        Else
+            Return con.VariableNombreDset("CantidadArt")
+        End If
     End Function
 
     Public Function TotalVenta(IdVenta As String) As Single
         con.SQL = "SELECT SUM(Total) AS GranTotal FROM DetalleVentas WHERE IdVenta = '" & IdVenta & "';"
         con.Llenar()
-        Return con.VariableNombreDset("GranTotal")
+        If con.VariableNombreDset("GranTotal") = "" Then
+            Return 0
+        Else
+            Return con.VariableNombreDset("GranTotal")
+        End If
     End Function
 
     Public Function TotalBeneficios(IdVenta As String) As Single

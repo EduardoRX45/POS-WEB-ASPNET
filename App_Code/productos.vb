@@ -163,7 +163,7 @@ Public Class productos
 
     Public Sub combo(ddlProds As DropDownList)
         con.SQL = "exec sp_ProductoSelAll"
-        con.Combo(ddlProds, "Descripcion", "IdProducto")
+        con.Combo(ddlProds, "Nombre", "IdProducto")
     End Sub
 
     Public Sub repeater(repProds As Repeater)

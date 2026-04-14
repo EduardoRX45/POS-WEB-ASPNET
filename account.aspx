@@ -23,25 +23,26 @@
                         <br />
                         <asp:Label ID="Label_appat" runat="server" CssClass="text-lb"></asp:Label>
                         <br />
-                        <asp:TextBox ID="TextBox_appat" runat="server" CssClass="input_txt"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_appat" runat="server" CssClass="input_txt" minlength="1" ></asp:TextBox>
                         <br />
                         <br />
                         <asp:Label ID="Label_apmat" runat="server" CssClass="text-lb"></asp:Label>
                         <br />
                         <asp:TextBox ID="TextBox_apmat" runat="server" CssClass="input_txt"></asp:TextBox>
+
                     </div>
 
                     <div>
                         <asp:Label ID="Label_correo" runat="server" CssClass="text-lb"></asp:Label>
                         <br />
-                        <asp:TextBox ID="TextBox_correo" runat="server" TextMode="Email" CssClass="input_txt"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_correo" runat="server" ReadOnly="false" TextMode="Email" CssClass="input_txt"></asp:TextBox>
                         <br />
                         <br />
-                        <asp:Label ID="Label_telf" runat="server" CssClass="text-lb"></asp:Label>
+<%--                        <asp:Label ID="Label_telf" runat="server" CssClass="text-lb"></asp:Label>
                         <br />
-                        <asp:TextBox ID="TextBox_telf" runat="server" MaxLength="10" CssClass="input_txt"></asp:TextBox>
+                        <asp:TextBox ID="TextBox_telf" runat="server" ReadOnly="false" TextMode="Number" MaxLength="10" CssClass="input_txt"></asp:TextBox>
                         <br />
-                        <br />
+                        <br />--%>
                         <asp:Label ID="Label_img" runat="server" CssClass="text-lb"></asp:Label>
                         <br />
                         <asp:FileUpload ID="FileUpload_img" runat="server"/>
